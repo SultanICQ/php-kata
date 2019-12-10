@@ -29,11 +29,6 @@ class Game
         $this->places = array(0);
         $this->purses = array(0);
         $this->inPenaltyBox = array(0);
-
-        $this->popQuestions = $this->questions->getPopQuestions();
-        $this->scienceQuestions = $this->questions->getScienceQuestions();
-        $this->sportsQuestions = $this->questions->getSportsQuestions();
-        $this->rockQuestions = $this->questions->getRockQuestions();
     }
 
     function createRockQuestion($index)
@@ -78,13 +73,13 @@ class Game
     {
         $position =$this->places[$this->currentPlayer];
         if ($this->currentCategory($position) == "Pop")
-            echoln(array_shift($this->popQuestions));
+            echoln($this->questions->getAndRemovePopQuestions());
         if ($this->currentCategory($position) == "Science")
-            echoln(array_shift($this->scienceQuestions));
+            echoln($this->questions->getAndRemoveScienceQuestions());
         if ($this->currentCategory($position) == "Sports")
-            echoln(array_shift($this->sportsQuestions));
+            echoln($this->questions->getAndRemoveSportsQuestions());
         if ($this->currentCategory($position) == "Rock")
-            echoln(array_shift($this->rockQuestions));
+            echoln($this->questions->getAndRemoveRockQuestions());
     }
 
 
