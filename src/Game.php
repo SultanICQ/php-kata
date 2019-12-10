@@ -71,8 +71,6 @@ class Game {
 				echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
                 $this->advancePlayer($roll);
 
-				echoln("The category is " . $this->currentCategory());
-				$this->askQuestion();
 			} else {
 				echoln($this->players[$this->currentPlayer] . " is not getting out of the penalty box");
 				$this->isGettingOutOfPenaltyBox = false;
@@ -82,8 +80,6 @@ class Game {
 
             $this->advancePlayer($roll);
 
-			echoln("The category is " . $this->currentCategory());
-			$this->askQuestion();
 		}
 
 	}
@@ -178,5 +174,7 @@ class Game {
         echoln($this->players[$this->currentPlayer]
             . "'s new location is "
             .$this->places[$this->currentPlayer]);
+        echoln("The category is " . $this->currentCategory());
+        $this->askQuestion();
     }
 }
