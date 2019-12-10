@@ -98,8 +98,6 @@ class Game
         if ($this->places[$this->currentPlayer]%4 == 1) return "Science";
 
         if ($this->places[$this->currentPlayer]%4 == 2) return "Sports";
-        if ($this->places[$this->currentPlayer] == 6) return "Sports";
-        if ($this->places[$this->currentPlayer] == 10) return "Sports";
 
         if ($this->places[$this->currentPlayer] == 3) return "Rock";
         if ($this->places[$this->currentPlayer] == 7) return "Rock";
