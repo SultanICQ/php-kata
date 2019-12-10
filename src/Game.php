@@ -30,17 +30,10 @@ class Game
         $this->purses = array(0);
         $this->inPenaltyBox = array(0);
 
-        $this->popQuestions = array();
-        $this->scienceQuestions = array();
-        $this->sportsQuestions = array();
-        $this->rockQuestions = array();
-
-        for ($i = 0; $i < 50; $i++) {
-            array_push($this->popQuestions, "Pop Question " . $i);
-            array_push($this->scienceQuestions, ("Science Question " . $i));
-            array_push($this->sportsQuestions, ("Sports Question " . $i));
-            array_push($this->rockQuestions, $this->createRockQuestion($i));
-        }
+        $this->popQuestions = $this->questions->getPopQuestions();
+        $this->scienceQuestions = $this->questions->getScienceQuestions();
+        $this->sportsQuestions = $this->questions->getSportsQuestions();
+        $this->rockQuestions = $this->questions->getRockQuestions();
     }
 
     function createRockQuestion($index)
