@@ -11,6 +11,8 @@ class Game
     var $purses;
     var $inPenaltyBox;
 
+    var $questions;
+
     var $popQuestions;
     var $scienceQuestions;
     var $sportsQuestions;
@@ -19,8 +21,9 @@ class Game
     var $currentPlayer = 0;
     var $isGettingOutOfPenaltyBox;
 
-    function __construct()
+    function __construct(Questions $questions)
     {
+        $this->questions = $questions;
 
         $this->players = array();
         $this->places = array(0);

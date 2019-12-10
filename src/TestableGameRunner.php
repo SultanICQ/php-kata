@@ -1,12 +1,13 @@
 <?php
 
+include __DIR__.'/Questions.php';
 include __DIR__.'/Game.php';
 
 $notAWinner;
 
 
 
-$aGame = new Game();
+$aGame = new Game( new Questions());
 
 $aGame->add("Chet");
 $aGame->add("Pat");
