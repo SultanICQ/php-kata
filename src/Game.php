@@ -101,7 +101,7 @@ class Game
 
         if ($this->places[$this->currentPlayer]%4 == 3) return "Rock";
 
-        return "MAL";
+        throw new Exception();
     }
 
     function wasCorrectlyAnswered()
