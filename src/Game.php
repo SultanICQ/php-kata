@@ -178,14 +178,15 @@ class Game
 
     /**
      * @param $roll
+     * @return bool
      */
-    public function playerCanAdvance($roll)
+    public function playerCanAdvance($roll): bool
     {
         if (!$this->inPenaltyBox[$this->currentPlayer]) {
             return true;
         }
 
-        if ($roll % 2 != 0) {
+        if ($this->canLeavePenaltyBox($roll)) {
             $this->isGettingOutOfPenaltyBox = true;
             echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
             return true;
@@ -194,5 +195,14 @@ class Game
         echoln($this->players[$this->currentPlayer] . " is not getting out of the penalty box");
         $this->isGettingOutOfPenaltyBox = false;
         return false;
+    }
+
+    /**
+     * @param $roll
+     * @return bool
+     */
+    public function canLeavePenaltyBox($roll): bool
+    {
+        return $roll % 2 != 0;
     }
 }
