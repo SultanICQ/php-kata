@@ -95,7 +95,7 @@ class Game
     {
         if ($this->places[$this->currentPlayer]%4 == 0) return "Pop";
 
-        if ($this->places[$this->currentPlayer] == 1) return "Science";
+        if ($this->places[$this->currentPlayer]%4 == 1) return "Science";
         if ($this->places[$this->currentPlayer] == 5) return "Science";
         if ($this->places[$this->currentPlayer] == 9) return "Science";
 
