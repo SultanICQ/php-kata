@@ -12,7 +12,7 @@ $aGame->add("Chet");
 $aGame->add("Pat");
 $aGame->add("Sue");
 
-srand(1000);
+srand(1200);
 
 do {
 
