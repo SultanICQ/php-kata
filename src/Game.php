@@ -93,7 +93,7 @@ class Game
 
     function currentCategory()
     {
-        if ($this->places[$this->currentPlayer] == 0) return "Pop";
+        if ($this->places[$this->currentPlayer]%4 == 0) return "Pop";
         if ($this->places[$this->currentPlayer] == 4) return "Pop";
         if ($this->places[$this->currentPlayer] == 8) return "Pop";
 
