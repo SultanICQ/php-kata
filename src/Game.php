@@ -72,22 +72,8 @@ class Game
         echoln($this->players[$this->currentPlayer] . " is the current player");
         echoln("They have rolled a " . $roll);
 
-        if ($this->inPenaltyBox[$this->currentPlayer]) {
-            if ($roll % 2 != 0) {
-                $this->isGettingOutOfPenaltyBox = true;
-
-                echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
-                $this->advancePlayer($roll);
-
-            } else {
-                echoln($this->players[$this->currentPlayer] . " is not getting out of the penalty box");
-                $this->isGettingOutOfPenaltyBox = false;
-            }
-
-        } else {
-
+        if ( $this->playerCanAdvance($roll) ) {
             $this->advancePlayer($roll);
-
         }
 
     }
@@ -188,5 +174,31 @@ class Game
             . $this->places[$this->currentPlayer]);
         echoln("The category is " . $this->currentCategory());
         $this->askQuestion();
+    }
+
+    /**
+     * @param $roll
+     */
+    public function playerCanAdvance($roll)
+    {
+        if ($this->inPenaltyBox[$this->currentPlayer]) {
+            if ($roll % 2 != 0) {
+                $this->isGettingOutOfPenaltyBox = true;
+
+                echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
+
+                return true;
+
+            } else {
+                echoln($this->players[$this->currentPlayer] . " is not getting out of the penalty box");
+                $this->isGettingOutOfPenaltyBox = false;
+            }
+
+        } else {
+
+            return true;
+
+        }
+        return false;
     }
 }
