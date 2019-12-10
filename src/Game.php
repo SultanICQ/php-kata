@@ -181,24 +181,18 @@ class Game
      */
     public function playerCanAdvance($roll)
     {
-        if ($this->inPenaltyBox[$this->currentPlayer]) {
-            if ($roll % 2 != 0) {
-                $this->isGettingOutOfPenaltyBox = true;
-
-                echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
-
-                return true;
-
-            } else {
-                echoln($this->players[$this->currentPlayer] . " is not getting out of the penalty box");
-                $this->isGettingOutOfPenaltyBox = false;
-            }
-
-        } else {
-
+        if (!$this->inPenaltyBox[$this->currentPlayer]) {
             return true;
-
         }
+
+        if ($roll % 2 != 0) {
+            $this->isGettingOutOfPenaltyBox = true;
+            echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
+            return true;
+        }
+
+        echoln($this->players[$this->currentPlayer] . " is not getting out of the penalty box");
+        $this->isGettingOutOfPenaltyBox = false;
         return false;
     }
 }
