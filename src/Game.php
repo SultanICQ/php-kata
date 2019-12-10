@@ -71,9 +71,6 @@ class Game {
 				echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
                 $this->advancePlayer($roll);
 
-                echoln($this->players[$this->currentPlayer]
-						. "'s new location is "
-						.$this->places[$this->currentPlayer]);
 				echoln("The category is " . $this->currentCategory());
 				$this->askQuestion();
 			} else {
@@ -85,9 +82,6 @@ class Game {
 
             $this->advancePlayer($roll);
 
-            echoln($this->players[$this->currentPlayer]
-					. "'s new location is "
-					.$this->places[$this->currentPlayer]);
 			echoln("The category is " . $this->currentCategory());
 			$this->askQuestion();
 		}
@@ -181,5 +175,8 @@ class Game {
     {
         $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
         if ($this->places[$this->currentPlayer] > 11) $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+        echoln($this->players[$this->currentPlayer]
+            . "'s new location is "
+            .$this->places[$this->currentPlayer]);
     }
 }
