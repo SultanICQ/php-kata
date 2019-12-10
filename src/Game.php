@@ -80,26 +80,27 @@ class Game
 
     function askQuestion()
     {
-        if ($this->currentCategory() == "Pop")
+        $position =$this->places[$this->currentPlayer];
+        if ($this->currentCategory($position) == "Pop")
             echoln(array_shift($this->popQuestions));
-        if ($this->currentCategory() == "Science")
+        if ($this->currentCategory($position) == "Science")
             echoln(array_shift($this->scienceQuestions));
-        if ($this->currentCategory() == "Sports")
+        if ($this->currentCategory($position) == "Sports")
             echoln(array_shift($this->sportsQuestions));
-        if ($this->currentCategory() == "Rock")
+        if ($this->currentCategory($position) == "Rock")
             echoln(array_shift($this->rockQuestions));
     }
 
 
-    function currentCategory()
+    function currentCategory($position)
     {
-        if ($this->places[$this->currentPlayer]%4 == 0) return "Pop";
+        if ($position%4 == 0) return "Pop";
 
-        if ($this->places[$this->currentPlayer]%4 == 1) return "Science";
+        if ($position%4 == 1) return "Science";
 
-        if ($this->places[$this->currentPlayer]%4 == 2) return "Sports";
+        if ($position%4 == 2) return "Sports";
 
-        if ($this->places[$this->currentPlayer]%4 == 3) return "Rock";
+        if ($position%4 == 3) return "Rock";
 
         throw new Exception();
     }
@@ -171,7 +172,7 @@ class Game
         echoln($this->players[$this->currentPlayer]
             . "'s new location is "
             . $this->places[$this->currentPlayer]);
-        echoln("The category is " . $this->currentCategory());
+        echoln("The category is " . $this->currentCategory($this->places[$this->currentPlayer]));
         $this->askQuestion();
     }
 
