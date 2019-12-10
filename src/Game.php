@@ -69,10 +69,9 @@ class Game {
 				$this->isGettingOutOfPenaltyBox = true;
 
 				echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
-			$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
-				if ($this->places[$this->currentPlayer] > 11) $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+                $this->advancePlayer($roll);
 
-				echoln($this->players[$this->currentPlayer]
+                echoln($this->players[$this->currentPlayer]
 						. "'s new location is "
 						.$this->places[$this->currentPlayer]);
 				echoln("The category is " . $this->currentCategory());
@@ -84,10 +83,9 @@ class Game {
 
 		} else {
 
-		$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
-			if ($this->places[$this->currentPlayer] > 11) $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+            $this->advancePlayer($roll);
 
-			echoln($this->players[$this->currentPlayer]
+            echoln($this->players[$this->currentPlayer]
 					. "'s new location is "
 					.$this->places[$this->currentPlayer]);
 			echoln("The category is " . $this->currentCategory());
@@ -175,4 +173,13 @@ class Game {
 	function didPlayerWin() {
 		return !($this->purses[$this->currentPlayer] == 6);
 	}
+
+    /**
+     * @param $roll
+     */
+    public function advancePlayer($roll): void
+    {
+        $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
+        if ($this->places[$this->currentPlayer] > 11) $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+    }
 }
